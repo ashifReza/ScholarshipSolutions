@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="final_32_dbbModelStoreContainer" CdmEntityContainer="final_32_dbbEntities">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expertises">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Expertise">
+        <MappingFragment StoreEntitySet="Expertise">
+          <ScalarProperty Name="ExpertiseID" ColumnName="ExpertiseID" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Interests">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Interest">
+        <MappingFragment StoreEntitySet="Interest">
+          <ScalarProperty Name="InterestID" ColumnName="InterestID" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professors">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="ProfID" ColumnName="ProfID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EducationalBackground" ColumnName="EducationalBackground" />
+          <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
+          <ScalarProperty Name="Funding" ColumnName="Funding" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="UniID" ColumnName="UniID" />
+          <ScalarProperty Name="InterestID" ColumnName="InterestID" />
+          <ScalarProperty Name="ExpertiseID" ColumnName="ExpertiseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfessorResearchPapers">
+      <EntityTypeMapping TypeName="final_32_dbbModel.ProfessorResearchPaper">
+        <MappingFragment StoreEntitySet="ProfessorResearchPaper">
+          <ScalarProperty Name="DOI" ColumnName="DOI" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ProfID" ColumnName="ProfID" />
+          <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Citation" ColumnName="Citation" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scholarships">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Scholarship">
+        <MappingFragment StoreEntitySet="Scholarship">
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="DegreeName" ColumnName="DegreeName" />
+          <ScalarProperty Name="UniID" ColumnName="UniID" />
+          <ScalarProperty Name="ProfID" ColumnName="ProfID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="PercentageOfScholarship" ColumnName="PercentageOfScholarship" />
+          <ScalarProperty Name="Session" ColumnName="Session" />
+          <ScalarProperty Name="Seats" ColumnName="Seats" />
+          <ScalarProperty Name="MinimumGPA" ColumnName="MinimumGPA" />
+          <ScalarProperty Name="OtherRequirements" ColumnName="OtherRequirements" />
+          <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="final_32_dbbModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="StudentPicture" ColumnName="StudentPicture" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Session" ColumnName="Session" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AverageGrade" ColumnName="AverageGrade" />
+          <ScalarProperty Name="CompletedCredit" ColumnName="CompletedCredit" />
+          <ScalarProperty Name="ExtracurricularActivities" ColumnName="ExtracurricularActivities" />
+          <ScalarProperty Name="Blog" ColumnName="Blog" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentCourseResults">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentCourseResult">
+        <MappingFragment StoreEntitySet="StudentCourseResult">
+          <ScalarProperty Name="StudentCourseResultID" ColumnName="StudentCourseResultID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentExpertises">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentExpertise">
+        <MappingFragment StoreEntitySet="StudentExpertise">
+          <ScalarProperty Name="StudentExpertiseID" ColumnName="StudentExpertiseID" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="ExpertiseID" ColumnName="ExpertiseID" />
+          <ScalarProperty Name="Institution" ColumnName="Institution" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentInterests">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentInterest">
+        <MappingFragment StoreEntitySet="StudentInterest">
+          <ScalarProperty Name="StudentInterestID" ColumnName="StudentInterestID" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="InterestID" ColumnName="InterestID" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentMessages">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentMessage">
+        <MappingFragment StoreEntitySet="StudentMessage">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="TextMessage" ColumnName="TextMessage" />
+          <ScalarProperty Name="ProfId" ColumnName="ProfId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentResearchPapers">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentResearchPaper">
+        <MappingFragment StoreEntitySet="StudentResearchPaper">
+          <ScalarProperty Name="DOI" ColumnName="DOI" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PageNO" ColumnName="PageNO" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="Citation" ColumnName="Citation" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentScholarships">
+      <EntityTypeMapping TypeName="final_32_dbbModel.StudentScholarship">
+        <MappingFragment StoreEntitySet="StudentScholarship">
+          <ScalarProperty Name="StudentScholarshipID" ColumnName="StudentScholarshipID" />
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Universities">
+      <EntityTypeMapping TypeName="final_32_dbbModel.University">
+        <MappingFragment StoreEntitySet="University">
+          <ScalarProperty Name="UniID" ColumnName="UniID" />
+          <ScalarProperty Name="UniName" ColumnName="UniName" />
+          <ScalarProperty Name="UniRating" ColumnName="UniRating" />
+          <ScalarProperty Name="UniPicture" ColumnName="UniPicture" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

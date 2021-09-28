@@ -1,0 +1,148 @@
+﻿@model IEnumerable<ScholarshipSolution.Models.University>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Scholarship Solution</title>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/vendors_admin/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/vendors_admin/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/vendors_admin/images/favicon-16x16.png">
+
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/vendor/bootstrap-icons/bootstrap-icons.css")
+    @Styles.Render("~/Content/cssassets/vendor/aos/aos.css")
+    @Styles.Render("~/Content/vendor/remixicon/remixicon.css")
+    @Styles.Render("~/Content/vendor/swiper/swiper-bundle.min.css")
+    @Styles.Render("~/Content/vendor/glightbox/css/glightbox.min.css")
+    @Styles.Render("~/Content/css/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Content/img/logo.png" alt="">
+                <span style="color:#ff758f;">Scholarship Solution</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    @*<li><a class="nav-link scrollto" href="#hero">Home</a></li>*@
+                    <li><a class="nav-link scrollto" href="~/Students/search/">University</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/Professor/">Professor</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/StudentScholarship/">Scholarship</a></li>
+                    <li><a class="nav-link scrollto " style="margin-left:35px; " href="~/Students/DashBoard/">My Profile</a></li>
+                    <li><a class="getstarted scrollto" href="~/Home/Index/">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style="margin:20px; padding:10px;">
+            @using (Html.BeginForm("search", "Students", FormMethod.Get))
+            {
+                @Html.TextBox("searching")<input type="submit" value="Search" />
+
+            }
+            <table class=" table table-striped ">
+                <thead>
+                    <tr>
+                        <th>UniName</th>
+                        <th>Rating</th>
+                        <th>City</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="3" style="color:red">
+                                No match any document
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.UniName</td>
+                                <td>@item.UniRating</td>
+                                <td>@item.City</td>
+                                <td>@item.Country</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    </header>
+</body>
+</html>
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "search";
+    }
+
+    <br />
+    <br />
+    <h2>search</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>SearchUni_Student</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UniName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UniName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UniName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

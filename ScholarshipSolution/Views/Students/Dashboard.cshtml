@@ -1,0 +1,245 @@
+﻿@using ScholarshipSolution.Models;
+@model dynamic
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Scholarship Solution</title>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/vendors_admin/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/vendors_admin/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/vendors_admin/images/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/vendor/bootstrap-icons/bootstrap-icons.css")
+    @Styles.Render("~/Content/cssassets/vendor/aos/aos.css")
+    @Styles.Render("~/Content/vendor/remixicon/remixicon.css")
+    @Styles.Render("~/Content/vendor/swiper/swiper-bundle.min.css")
+    @Styles.Render("~/Content/vendor/glightbox/css/glightbox.min.css")
+    @Styles.Render("~/Content/css/style.css")
+    @Styles.Render("~/Content/css/profprofile.css")
+    @Styles.Render("~/Content/css/StyleSheet1.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Content/img/logo.png" alt="">
+                <span style="color:#ff758f;">Scholarship Solution</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="~/Universities/SearchUni/">University</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/Professor/">Professor</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/StudentScholarship/">Scholarship</a></li>
+                    <li><a class="nav-link scrollto " style="margin-left:35px; " href="~/Students/DashBoard/">My Profile</a></li>
+                    <li><a class="getstarted scrollto" href="~/Home/Index/">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header>
+    <!-- Header -->
+    <!-- Page content -->
+    <br>
+    <section id="content" class="container">
+        <!-- Begin .page-heading -->
+        <div class="page-heading">
+            <div class="media clearfix">
+                <div class="media-left pr30">
+                    <a href="#">
+                        <img class="media-object mw150" src="@Url.Content(Model.Student.StudentPicture)" width="250" height="250">
+                    </a>
+                </div>
+                <div class="media-body va-m">
+                    <h2 class="media-heading">
+                        @Model.Student.FirstName @Model.Student.LastName
+                        <small> - Profile</small>
+                    </h2>
+                    <p class="lead">@Model.Student.Email</p>
+                    <h6>@Html.ActionLink("Research Paper", "Index", "StudentResearchPapers", new { id = Model.Student.StudentID }, new { @class = "btn btn-sm btn-info mr-4" })</h6>
+                    <h6>@Html.ActionLink("Enrolled Scholarship", "Index", "StudentScholarships", new { id = Model.Student.StudentID }, new { @class = "btn btn-sm btn-info mr-4" })</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-icon">
+                            <i class="fa fa-book"></i>
+                        </span>
+                        <span class="panel-title"> Academic Info</span>
+                    </div>
+                    <div class="panel-body pn">
+                        <h6>Department</h6>
+                        <h4>@Model.Student.Department</h4>
+                        <h6>Year</h6>
+                        <h4>@Model.Student.Year</h4>
+                        <h6>Semester</h6>
+                        <h4>@Model.Student.Semester</h4>
+                        <h6>Session</h6>
+                        <h4>@Model.Student.Session</h4>
+                        <h6>CGPA</h6>
+                        <h4>@Model.Student.AverageGrade</h4>
+                        <h6>Completed Credit</h6>
+                        <h4>@Model.Student.CompletedCredit</h4>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-icon">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                        <span class="panel-title">About Me</span>
+                    </div>
+                    <div class="panel-body pb5">
+                        <h6>Extracurricular Activities</h6>
+                        <h4>@Model.Student.ExtracurricularActivities</h4>
+                        <h6>Blog</h6>
+                        <h4>@Model.Student.Blog</h4>
+                        <h6>Reference</h6>
+                        <h4>@Model.Student.Reference</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+
+                <div class="tab-block">
+                    @*<ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab1" data-toggle="tab">Result</a>
+                            </li>
+                            <li>
+                                <a href="#tab1" data-toggle="tab">Expert</a>
+                            </li>
+                            <li>
+                                <a href="#tab1" data-toggle="tab">Interest</a>
+                            </li>
+                        </ul>
+                        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+                        <script type="text/javascript">
+                            $(document).on('click', 'ul li ', function () {
+                                $(this).addClass('active').siblings().removeClass('active')
+                            })
+                        </script>*@
+
+                    <div class="tab-content p30" style="height: 500px;">
+                        <h3>Course Result</h3>
+                        <br>
+                        <div id="tab1" class="tab-pane active">
+                            <table class="table">
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Grade</th>
+                                </tr>
+                                @if (Model.StudentCourseList != null)
+                                {
+                                    foreach (StudentCourseInfo scr in Model.StudentCourseList)
+                                    {
+                                        <tr>
+                                            <td>@scr.CourseName</td>
+                                            <td>@scr.Grade</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                        <br>
+                        <h3>Student Expertise</h3>
+                        <br>
+                        <div id="tab2" class="tab-pane active">
+                            <table class="table">
+                                <tr>
+                                    <th>Expert on</th>
+                                    <th>Institution</th>
+                                </tr>
+                                @if (Model.StudentExpertiseList != null)
+                                {
+                                    foreach (StudentExpertiseInfo scr in Model.StudentExpertiseList)
+                                    {
+                                        <tr>
+                                            <td>@scr.TopicName</td>
+                                            <td>@scr.Institution</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                        <br>
+                        <h3>Student Interest</h3>
+                        <br>
+                        <div id="tab3" class="tab-pane active">
+                            <table class="table">
+                                <tr>
+                                    <th>Interested in</th>
+                                    <th>Reason</th>
+                                </tr>
+                                @if (Model.StudentInterestList != null)
+                                {
+                                    foreach (StudentInterestInfo scr in Model.StudentInterestList)
+                                    {
+                                        <tr>
+                                            <td>@scr.TopicName</td>
+                                            <td>@scr.Reason</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                        <div id="tab4" class="tab-pane"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Vendor JS Files -->
+    @Scripts.Render("~/assets/vendor/bootstrap/js/bootstrap.bundle.js")
+    @Scripts.Render("~/assets/vendor/aos/aos.js")
+    @Scripts.Render("~/assets/vendor/php-email-form/validate.js")
+    @Scripts.Render("~/assets/vendor/swiper/swiper-bundle.min.js")
+    @Scripts.Render("~/assets/vendor/purecounter/purecounter.js")
+    @Scripts.Render("~/assets/vendor/isotope-layout/isotope.pkgd.min.js")
+    @Scripts.Render("~/assets/vendor/glightbox/js/glightbox.min.js")
+
+
+    <!-- Template Main JS File -->
+    @Scripts.Render("~/assets/js/main.js")
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

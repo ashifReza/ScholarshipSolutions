@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="final_32_dbbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Semester" Type="int" />
+  </EntityType>
+  <EntityType Name="Expertise">
+    <Key>
+      <PropertyRef Name="ExpertiseID" />
+    </Key>
+    <Property Name="ExpertiseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TopicName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Interest">
+    <Key>
+      <PropertyRef Name="InterestID" />
+    </Key>
+    <Property Name="InterestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TopicName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="ProfID" />
+    </Key>
+    <Property Name="ProfID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="EducationalBackground" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NoOfStudents" Type="int" />
+    <Property Name="Funding" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Picture" Type="varchar" MaxLength="500" />
+    <Property Name="Department" Type="varchar" MaxLength="50" />
+    <Property Name="UniID" Type="int" />
+    <Property Name="InterestID" Type="int" Nullable="false" />
+    <Property Name="ExpertiseID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfessorResearchPaper">
+    <Key>
+      <PropertyRef Name="DOI" />
+    </Key>
+    <Property Name="DOI" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ProfID" Type="int" Nullable="false" />
+    <Property Name="PageNO" Type="int" Nullable="false" />
+    <Property Name="Volume" Type="varchar" MaxLength="10" />
+    <Property Name="PublicationDate" Type="date" Nullable="false" />
+    <Property Name="Publisher" Type="varchar" MaxLength="50" />
+    <Property Name="Citation" Type="int" />
+    <Property Name="Link" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Scholarship">
+    <Key>
+      <PropertyRef Name="ScholarshipID" />
+    </Key>
+    <Property Name="ScholarshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DegreeName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UniID" Type="int" />
+    <Property Name="ProfID" Type="int" />
+    <Property Name="Subject" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PercentageOfScholarship" Type="float" Nullable="false" />
+    <Property Name="Session" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Seats" Type="int" Nullable="false" />
+    <Property Name="MinimumGPA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OtherRequirements" Type="varchar" MaxLength="300" />
+    <Property Name="LastDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentPicture" Type="varchar" MaxLength="500" />
+    <Property Name="Department" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Session" Type="varchar" MaxLength="10" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Semester" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AverageGrade" Type="float" Nullable="false" />
+    <Property Name="CompletedCredit" Type="float" Nullable="false" />
+    <Property Name="ExtracurricularActivities" Type="varchar" MaxLength="50" />
+    <Property Name="Blog" Type="varchar" MaxLength="50" />
+    <Property Name="Reference" Type="varchar" MaxLength="50" />
+    <Property Name="Picture" Type="varbinary(max)" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="StudentCourseResult">
+    <Key>
+      <PropertyRef Name="StudentCourseResultID" />
+    </Key>
+    <Property Name="StudentCourseResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseID" Type="int" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="Grade" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentExpertise">
+    <Key>
+      <PropertyRef Name="StudentExpertiseID" />
+    </Key>
+    <Property Name="StudentExpertiseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="ExpertiseID" Type="int" Nullable="false" />
+    <Property Name="Institution" Type="varchar" MaxLength="70" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentInterest">
+    <Key>
+      <PropertyRef Name="StudentInterestID" />
+    </Key>
+    <Property Name="StudentInterestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="InterestID" Type="int" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="StudentMessage">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="TextMessage" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ProfId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentResearchPaper">
+    <Key>
+      <PropertyRef Name="DOI" />
+    </Key>
+    <Property Name="DOI" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="PageNO" Type="int" Nullable="false" />
+    <Property Name="Volume" Type="varchar" MaxLength="10" />
+    <Property Name="PublicationDate" Type="date" Nullable="false" />
+    <Property Name="Publisher" Type="varchar" MaxLength="50" />
+    <Property Name="Citation" Type="int" />
+    <Property Name="Link" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StudentScholarship">
+    <Key>
+      <PropertyRef Name="StudentScholarshipID" />
+    </Key>
+    <Property Name="StudentScholarshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScholarshipID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="UniID" />
+    </Key>
+    <Property Name="UniID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UniName" Type="varchar" MaxLength="50" />
+    <Property Name="UniRating" Type="float" />
+    <Property Name="UniPicture" Type="varchar" MaxLength="500" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Professor__Exper__2E1BDC42">
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="ExpertiseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Inter__2D27B809">
+    <End Role="Interest" Type="Self.Interest" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__ProfI__4316F928">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="ProfessorResearchPaper" Type="Self.ProfessorResearchPaper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="ProfessorResearchPaper">
+        <PropertyRef Name="ProfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__UniID__2C3393D0">
+    <End Role="University" Type="Self.University" Multiplicity="0..1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="UniID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Scholarsh__ProfI__33D4B598">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="Scholarship">
+        <PropertyRef Name="ProfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Scholarsh__UniID__32E0915F">
+    <End Role="University" Type="Self.University" Multiplicity="0..1" />
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniID" />
+      </Principal>
+      <Dependent Role="Scholarship">
+        <PropertyRef Name="UniID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCo__Cours__22AA2996">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="StudentCourseResult" Type="Self.StudentCourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="StudentCourseResult">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCo__Stude__239E4DCF">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentCourseResult" Type="Self.StudentCourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentCourseResult">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentEx__Exper__182C9B23">
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+    <End Role="StudentExpertise" Type="Self.StudentExpertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Principal>
+      <Dependent Role="StudentExpertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentEx__Stude__173876EA">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentExpertise" Type="Self.StudentExpertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentExpertise">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentIn__Inter__1273C1CD">
+    <End Role="Interest" Type="Self.Interest" Multiplicity="1" />
+    <End Role="StudentInterest" Type="Self.StudentInterest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestID" />
+      </Principal>
+      <Dependent Role="StudentInterest">
+        <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentIn__Stude__117F9D94">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentInterest" Type="Self.StudentInterest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentInterest">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentMe__ProfI__398D8EEE">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="StudentMessage" Type="Self.StudentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="StudentMessage">
+        <PropertyRef Name="ProfId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentMe__Stude__38996AB5">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentMessage" Type="Self.StudentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentMessage">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__Stude__3E52440B">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentResearchPaper" Type="Self.StudentResearchPaper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentResearchPaper">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentSc__Schol__47DBAE45">
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="0..1" />
+    <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Principal>
+      <Dependent Role="StudentScholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentSc__Stude__48CFD27E">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentScholarship" Type="Self.StudentScholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentScholarship">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="final_32_dbbModelStoreContainer">
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expertise" EntityType="Self.Expertise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfessorResearchPaper" EntityType="Self.ProfessorResearchPaper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scholarship" EntityType="Self.Scholarship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentCourseResult" EntityType="Self.StudentCourseResult" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentExpertise" EntityType="Self.StudentExpertise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentInterest" EntityType="Self.StudentInterest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentMessage" EntityType="Self.StudentMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentResearchPaper" EntityType="Self.StudentResearchPaper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentScholarship" EntityType="Self.StudentScholarship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="University" EntityType="Self.University" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Professor__Exper__2E1BDC42" Association="Self.FK__Professor__Exper__2E1BDC42">
+      <End Role="Expertise" EntitySet="Expertise" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Inter__2D27B809" Association="Self.FK__Professor__Inter__2D27B809">
+      <End Role="Interest" EntitySet="Interest" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__ProfI__4316F928" Association="Self.FK__Professor__ProfI__4316F928">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="ProfessorResearchPaper" EntitySet="ProfessorResearchPaper" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__UniID__2C3393D0" Association="Self.FK__Professor__UniID__2C3393D0">
+      <End Role="University" EntitySet="University" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Scholarsh__ProfI__33D4B598" Association="Self.FK__Scholarsh__ProfI__33D4B598">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Scholarship" EntitySet="Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Scholarsh__UniID__32E0915F" Association="Self.FK__Scholarsh__UniID__32E0915F">
+      <End Role="University" EntitySet="University" />
+      <End Role="Scholarship" EntitySet="Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCo__Cours__22AA2996" Association="Self.FK__StudentCo__Cours__22AA2996">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="StudentCourseResult" EntitySet="StudentCourseResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCo__Stude__239E4DCF" Association="Self.FK__StudentCo__Stude__239E4DCF">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentCourseResult" EntitySet="StudentCourseResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentEx__Exper__182C9B23" Association="Self.FK__StudentEx__Exper__182C9B23">
+      <End Role="Expertise" EntitySet="Expertise" />
+      <End Role="StudentExpertise" EntitySet="StudentExpertise" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentEx__Stude__173876EA" Association="Self.FK__StudentEx__Stude__173876EA">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentExpertise" EntitySet="StudentExpertise" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentIn__Inter__1273C1CD" Association="Self.FK__StudentIn__Inter__1273C1CD">
+      <End Role="Interest" EntitySet="Interest" />
+      <End Role="StudentInterest" EntitySet="StudentInterest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentIn__Stude__117F9D94" Association="Self.FK__StudentIn__Stude__117F9D94">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentInterest" EntitySet="StudentInterest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentMe__ProfI__398D8EEE" Association="Self.FK__StudentMe__ProfI__398D8EEE">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="StudentMessage" EntitySet="StudentMessage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentMe__Stude__38996AB5" Association="Self.FK__StudentMe__Stude__38996AB5">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentMessage" EntitySet="StudentMessage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__Stude__3E52440B" Association="Self.FK__StudentRe__Stude__3E52440B">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentResearchPaper" EntitySet="StudentResearchPaper" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentSc__Schol__47DBAE45" Association="Self.FK__StudentSc__Schol__47DBAE45">
+      <End Role="Scholarship" EntitySet="Scholarship" />
+      <End Role="StudentScholarship" EntitySet="StudentScholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentSc__Stude__48CFD27E" Association="Self.FK__StudentSc__Stude__48CFD27E">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentScholarship" EntitySet="StudentScholarship" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

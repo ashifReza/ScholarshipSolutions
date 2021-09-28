@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ScholarshipSolution.Models.Professor>
+
+@{
+    ViewBag.Title = "Professor";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Scholarship Solution</title>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/vendors_admin/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/vendors_admin/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/vendors_admin/images/favicon-16x16.png">
+
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/vendor/bootstrap-icons/bootstrap-icons.css")
+    @Styles.Render("~/Content/cssassets/vendor/aos/aos.css")
+    @Styles.Render("~/Content/vendor/remixicon/remixicon.css")
+    @Styles.Render("~/Content/vendor/swiper/swiper-bundle.min.css")
+    @Styles.Render("~/Content/vendor/glightbox/css/glightbox.min.css")
+    @Styles.Render("~/Content/css/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Content/img/logo.png" alt="">
+                <span style="color:#ff758f;">Scholarship Solution</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    @*<li><a class="nav-link scrollto" href="#hero">Home</a></li>*@
+                    <li><a class="nav-link scrollto" href="~/Universities/SearchUni/">University</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/Professor/">Professor</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/StudentScholarship/">Scholarship</a></li>
+                    <li><a class="nav-link scrollto " style="margin-left:35px; " href="~/Students/DashBoard/">My Profile</a></li>
+                    <li><a class="getstarted scrollto" href="~/Home/Index/">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header>
+    <main>
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <header class="section-header">
+                    <h2>Available Professors</h2>
+                    <p>Contact them soon for your desired scholarship. </p>
+                </header>
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    { 
+                        <div class="col-lg-4">
+                            <div class="box" data-aos="fade-up" data-aos-delay="200">
+                                <img src="@Url.Content(item.Picture)" class="img-fluid" width="100" height="100" alt="">
+                                <h3>@Html.DisplayFor(model => item.Name)</h3>
+                                <p>@Html.DisplayFor(model => item.Email)</p>
+                            </div>
+                            <div class="wrap">
+                                <p>@Html.ActionLink("Profile", "ProfileFromStudent", "Professors", new { id = item.ProfID }, null)</p>
+                            </div>
+                        </div>
+                     }
+                
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+
+
+@*<h2>Professor</h2>*@
+
+
+

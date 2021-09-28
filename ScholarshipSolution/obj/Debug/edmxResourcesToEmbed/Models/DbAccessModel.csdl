@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="final_32_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Semester" Type="Int32" />
+    <NavigationProperty Name="StudentCourseResults" Relationship="Self.FK__StudentCo__Cours__24927208" FromRole="Course" ToRole="StudentCourseResult" />
+  </EntityType>
+  <EntityType Name="Expertise">
+    <Key>
+      <PropertyRef Name="ExpertiseID" />
+    </Key>
+    <Property Name="ExpertiseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Professors" Relationship="Self.FK__Professor__Exper__2C3393D0" FromRole="Expertise" ToRole="Professor" />
+    <NavigationProperty Name="StudentExpertises" Relationship="Self.FK__StudentEx__Exper__1DE57479" FromRole="Expertise" ToRole="StudentExpertise" />
+  </EntityType>
+  <EntityType Name="Interest">
+    <Key>
+      <PropertyRef Name="InterestID" />
+    </Key>
+    <Property Name="InterestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Professors" Relationship="Self.FK__Professor__Inter__2B3F6F97" FromRole="Interest" ToRole="Professor" />
+    <NavigationProperty Name="StudentInterests" Relationship="Self.FK__StudentIn__Inter__1A14E395" FromRole="Interest" ToRole="StudentInterest" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="ProfID" />
+    </Key>
+    <Property Name="ProfID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EducationalBackground" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NoOfStudents" Type="Int32" />
+    <Property Name="Funding" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Picture" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UniID" Type="Int32" />
+    <Property Name="InterestID" Type="Int32" Nullable="false" />
+    <Property Name="ExpertiseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Expertise" Relationship="Self.FK__Professor__Exper__2C3393D0" FromRole="Professor" ToRole="Expertise" />
+    <NavigationProperty Name="Interest" Relationship="Self.FK__Professor__Inter__2B3F6F97" FromRole="Professor" ToRole="Interest" />
+    <NavigationProperty Name="ProfessorResearchPapers" Relationship="Self.FK__Professor__ProfI__398D8EEE" FromRole="Professor" ToRole="ProfessorResearchPaper" />
+    <NavigationProperty Name="University" Relationship="Self.FK__Professor__UniID__2A4B4B5E" FromRole="Professor" ToRole="University" />
+    <NavigationProperty Name="Scholarships" Relationship="Self.FK__Scholarsh__ProfI__300424B4" FromRole="Professor" ToRole="Scholarship" />
+    <NavigationProperty Name="StudentMessages" Relationship="Self.FK__StudentMe__ProfI__33D4B598" FromRole="Professor" ToRole="StudentMessage" />
+  </EntityType>
+  <EntityType Name="ProfessorResearchPaper">
+    <Key>
+      <PropertyRef Name="DOI" />
+    </Key>
+    <Property Name="DOI" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfID" Type="Int32" Nullable="false" />
+    <Property Name="PageNO" Type="Int32" Nullable="false" />
+    <Property Name="Volume" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Citation" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK__Professor__ProfI__398D8EEE" FromRole="ProfessorResearchPaper" ToRole="Professor" />
+  </EntityType>
+  <EntityType Name="Scholarship">
+    <Key>
+      <PropertyRef Name="ScholarshipID" />
+    </Key>
+    <Property Name="ScholarshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DegreeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UniID" Type="Int32" />
+    <Property Name="ProfID" Type="Int32" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PercentageOfScholarship" Type="Double" Nullable="false" />
+    <Property Name="Session" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seats" Type="Int32" Nullable="false" />
+    <Property Name="MinimumGPA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OtherRequirements" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="LastDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK__Scholarsh__ProfI__300424B4" FromRole="Scholarship" ToRole="Professor" />
+    <NavigationProperty Name="University" Relationship="Self.FK__Scholarsh__UniID__2F10007B" FromRole="Scholarship" ToRole="University" />
+    <NavigationProperty Name="StudentScholarships" Relationship="final_32_dbModel.FK__StudentSc__Schol__49C3F6B7" FromRole="Scholarship" ToRole="StudentScholarship" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentPicture" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Session" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Semester" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AverageGrade" Type="Double" Nullable="false" />
+    <Property Name="CompletedCredit" Type="Double" Nullable="false" />
+    <Property Name="ExtracurricularActivities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Blog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StudentCourseResults" Relationship="Self.FK__StudentCo__Stude__25869641" FromRole="Student" ToRole="StudentCourseResult" />
+    <NavigationProperty Name="StudentExpertises" Relationship="Self.FK__StudentEx__Stude__1CF15040" FromRole="Student" ToRole="StudentExpertise" />
+    <NavigationProperty Name="StudentInterests" Relationship="Self.FK__StudentIn__Stude__1920BF5C" FromRole="Student" ToRole="StudentInterest" />
+    <NavigationProperty Name="StudentMessages" Relationship="Self.FK__StudentMe__Stude__32E0915F" FromRole="Student" ToRole="StudentMessage" />
+    <NavigationProperty Name="StudentResearchPapers" Relationship="Self.FK__StudentRe__Stude__36B12243" FromRole="Student" ToRole="StudentResearchPaper" />
+    <NavigationProperty Name="StudentScholarships" Relationship="final_32_dbModel.FK__StudentSc__Stude__4AB81AF0" FromRole="Student" ToRole="StudentScholarship" />
+  </EntityType>
+  <EntityType Name="StudentCourseResult">
+    <Key>
+      <PropertyRef Name="StudentCourseResultID" />
+    </Key>
+    <Property Name="StudentCourseResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="Grade" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__StudentCo__Cours__24927208" FromRole="StudentCourseResult" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__StudentCo__Stude__25869641" FromRole="StudentCourseResult" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="StudentExpertise">
+    <Key>
+      <PropertyRef Name="StudentExpertiseID" />
+    </Key>
+    <Property Name="StudentExpertiseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ExpertiseID" Type="Int32" Nullable="false" />
+    <Property Name="Institution" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Expertise" Relationship="Self.FK__StudentEx__Exper__1DE57479" FromRole="StudentExpertise" ToRole="Expertise" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__StudentEx__Stude__1CF15040" FromRole="StudentExpertise" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="StudentInterest">
+    <Key>
+      <PropertyRef Name="StudentInterestID" />
+    </Key>
+    <Property Name="StudentInterestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="InterestID" Type="Int32" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Interest" Relationship="Self.FK__StudentIn__Inter__1A14E395" FromRole="StudentInterest" ToRole="Interest" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__StudentIn__Stude__1920BF5C" FromRole="StudentInterest" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="StudentMessage">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="TextMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK__StudentMe__ProfI__33D4B598" FromRole="StudentMessage" ToRole="Professor" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__StudentMe__Stude__32E0915F" FromRole="StudentMessage" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="StudentResearchPaper">
+    <Key>
+      <PropertyRef Name="DOI" />
+    </Key>
+    <Property Name="DOI" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="PageNO" Type="Int32" Nullable="false" />
+    <Property Name="Volume" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Citation" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__StudentRe__Stude__36B12243" FromRole="StudentResearchPaper" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="UniID" />
+    </Key>
+    <Property Name="UniID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UniName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UniRating" Type="Double" />
+    <Property Name="UniPicture" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Professors" Relationship="Self.FK__Professor__UniID__2A4B4B5E" FromRole="University" ToRole="Professor" />
+    <NavigationProperty Name="Scholarships" Relationship="Self.FK__Scholarsh__UniID__2F10007B" FromRole="University" ToRole="Scholarship" />
+  </EntityType>
+  <Association Name="FK__StudentCo__Cours__24927208">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="StudentCourseResult" Type="Self.StudentCourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="StudentCourseResult">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Exper__2C3393D0">
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="ExpertiseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentEx__Exper__1DE57479">
+    <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+    <End Role="StudentExpertise" Type="Self.StudentExpertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Principal>
+      <Dependent Role="StudentExpertise">
+        <PropertyRef Name="ExpertiseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Inter__2B3F6F97">
+    <End Role="Interest" Type="Self.Interest" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentIn__Inter__1A14E395">
+    <End Role="Interest" Type="Self.Interest" Multiplicity="1" />
+    <End Role="StudentInterest" Type="Self.StudentInterest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestID" />
+      </Principal>
+      <Dependent Role="StudentInterest">
+        <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__ProfI__398D8EEE">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="ProfessorResearchPaper" Type="Self.ProfessorResearchPaper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="ProfessorResearchPaper">
+        <PropertyRef Name="ProfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__UniID__2A4B4B5E">
+    <End Role="University" Type="Self.University" Multiplicity="0..1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniID" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="UniID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Scholarsh__ProfI__300424B4">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="Scholarship">
+        <PropertyRef Name="ProfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentMe__ProfI__33D4B598">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="StudentMessage" Type="Self.StudentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfID" />
+      </Principal>
+      <Dependent Role="StudentMessage">
+        <PropertyRef Name="ProfId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Scholarsh__UniID__2F10007B">
+    <End Role="University" Type="Self.University" Multiplicity="0..1" />
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniID" />
+      </Principal>
+      <Dependent Role="Scholarship">
+        <PropertyRef Name="UniID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCo__Stude__25869641">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentCourseResult" Type="Self.StudentCourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentCourseResult">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentEx__Stude__1CF15040">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentExpertise" Type="Self.StudentExpertise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentExpertise">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentIn__Stude__1920BF5C">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentInterest" Type="Self.StudentInterest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentInterest">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentMe__Stude__32E0915F">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentMessage" Type="Self.StudentMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentMessage">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__Stude__36B12243">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentResearchPaper" Type="Self.StudentResearchPaper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentResearchPaper">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="final_32_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Expertises" EntityType="Self.Expertise" />
+    <EntitySet Name="Interests" EntityType="Self.Interest" />
+    <EntitySet Name="Professors" EntityType="Self.Professor" />
+    <EntitySet Name="ProfessorResearchPapers" EntityType="Self.ProfessorResearchPaper" />
+    <EntitySet Name="Scholarships" EntityType="Self.Scholarship" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="StudentCourseResults" EntityType="Self.StudentCourseResult" />
+    <EntitySet Name="StudentExpertises" EntityType="Self.StudentExpertise" />
+    <EntitySet Name="StudentInterests" EntityType="Self.StudentInterest" />
+    <EntitySet Name="StudentMessages" EntityType="Self.StudentMessage" />
+    <EntitySet Name="StudentResearchPapers" EntityType="Self.StudentResearchPaper" />
+    <EntitySet Name="Universities" EntityType="Self.University" />
+    <AssociationSet Name="FK__StudentCo__Cours__24927208" Association="Self.FK__StudentCo__Cours__24927208">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="StudentCourseResult" EntitySet="StudentCourseResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Exper__2C3393D0" Association="Self.FK__Professor__Exper__2C3393D0">
+      <End Role="Expertise" EntitySet="Expertises" />
+      <End Role="Professor" EntitySet="Professors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentEx__Exper__1DE57479" Association="Self.FK__StudentEx__Exper__1DE57479">
+      <End Role="Expertise" EntitySet="Expertises" />
+      <End Role="StudentExpertise" EntitySet="StudentExpertises" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Inter__2B3F6F97" Association="Self.FK__Professor__Inter__2B3F6F97">
+      <End Role="Interest" EntitySet="Interests" />
+      <End Role="Professor" EntitySet="Professors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentIn__Inter__1A14E395" Association="Self.FK__StudentIn__Inter__1A14E395">
+      <End Role="Interest" EntitySet="Interests" />
+      <End Role="StudentInterest" EntitySet="StudentInterests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__ProfI__398D8EEE" Association="Self.FK__Professor__ProfI__398D8EEE">
+      <End Role="Professor" EntitySet="Professors" />
+      <End Role="ProfessorResearchPaper" EntitySet="ProfessorResearchPapers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__UniID__2A4B4B5E" Association="Self.FK__Professor__UniID__2A4B4B5E">
+      <End Role="University" EntitySet="Universities" />
+      <End Role="Professor" EntitySet="Professors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Scholarsh__ProfI__300424B4" Association="Self.FK__Scholarsh__ProfI__300424B4">
+      <End Role="Professor" EntitySet="Professors" />
+      <End Role="Scholarship" EntitySet="Scholarships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentMe__ProfI__33D4B598" Association="Self.FK__StudentMe__ProfI__33D4B598">
+      <End Role="Professor" EntitySet="Professors" />
+      <End Role="StudentMessage" EntitySet="StudentMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Scholarsh__UniID__2F10007B" Association="Self.FK__Scholarsh__UniID__2F10007B">
+      <End Role="University" EntitySet="Universities" />
+      <End Role="Scholarship" EntitySet="Scholarships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCo__Stude__25869641" Association="Self.FK__StudentCo__Stude__25869641">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentCourseResult" EntitySet="StudentCourseResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentEx__Stude__1CF15040" Association="Self.FK__StudentEx__Stude__1CF15040">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentExpertise" EntitySet="StudentExpertises" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentIn__Stude__1920BF5C" Association="Self.FK__StudentIn__Stude__1920BF5C">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentInterest" EntitySet="StudentInterests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentMe__Stude__32E0915F" Association="Self.FK__StudentMe__Stude__32E0915F">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentMessage" EntitySet="StudentMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__Stude__36B12243" Association="Self.FK__StudentRe__Stude__36B12243">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentResearchPaper" EntitySet="StudentResearchPapers" />
+    </AssociationSet>
+    <EntitySet Name="StudentScholarships" EntityType="final_32_dbModel.StudentScholarship" />
+    <AssociationSet Name="FK__StudentSc__Schol__49C3F6B7" Association="final_32_dbModel.FK__StudentSc__Schol__49C3F6B7">
+      <End Role="Scholarship" EntitySet="Scholarships" />
+      <End Role="StudentScholarship" EntitySet="StudentScholarships" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentSc__Stude__4AB81AF0" Association="final_32_dbModel.FK__StudentSc__Stude__4AB81AF0">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentScholarship" EntitySet="StudentScholarships" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StudentScholarship">
+    <Key>
+      <PropertyRef Name="StudentScholarshipID" />
+    </Key>
+    <Property Name="StudentScholarshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScholarshipID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Scholarship" Relationship="final_32_dbModel.FK__StudentSc__Schol__49C3F6B7" FromRole="StudentScholarship" ToRole="Scholarship" />
+    <NavigationProperty Name="Student" Relationship="final_32_dbModel.FK__StudentSc__Stude__4AB81AF0" FromRole="StudentScholarship" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK__StudentSc__Schol__49C3F6B7">
+    <End Type="final_32_dbModel.Scholarship" Role="Scholarship" Multiplicity="0..1" />
+    <End Type="final_32_dbModel.StudentScholarship" Role="StudentScholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Principal>
+      <Dependent Role="StudentScholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentSc__Stude__4AB81AF0">
+    <End Type="final_32_dbModel.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="final_32_dbModel.StudentScholarship" Role="StudentScholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentScholarship">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
